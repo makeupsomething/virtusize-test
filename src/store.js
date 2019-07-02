@@ -15,14 +15,7 @@ const mutations = {
     },
 }
 
-const actions = {
-    getUserProfilePicture(email) {
-        //get the image here
-    },
-}
-
 export default new Vuex.Store({
     state,
     mutations,
-    actions,
 })
