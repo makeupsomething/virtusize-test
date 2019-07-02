@@ -52,7 +52,11 @@ export default {
 
     methods: {
         submit() {
-            console.log(this.creds)
+            this.$store.commit('setUser', {
+                firstName: this.creds.firstName,
+                lastName: this.creds.lastName,
+                email: this.creds.email,
+            })
             this.$router.push({name: 'profile'})
         },
     },
