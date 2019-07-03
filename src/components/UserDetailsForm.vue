@@ -35,6 +35,8 @@
                 required
             />
             <button @click.prevent="toggleShowPassword">show password</button>
+            <button @click.prevent="creds.password = null">clear</button>
+            <span>{{ passwordStrength }}</span>
         </div>
         <slot />
         <input type="submit" />
@@ -42,6 +44,8 @@
 </template>
 
 <script>
+import zxcvbn from 'zxcvbn'
+
 export default {
     name: 'UserDetailsForm',
 
@@ -68,8 +72,25 @@ export default {
                 email: null,
                 password: null,
             },
+            passwordIndicator: {
+                0: '😭',
+                1: '😕',
+                2: '😐',
+                3: '🙂',
+                4: '😃',
+            },
             showPassword: false,
         }
+    },
+
+    computed: {
+        passwordStrength() {
+            if (this.creds.password) {
+                console.log(zxcvbn(this.creds.password))
+                return this.passwordIndicator[zxcvbn(this.creds.password).score]
+            }
+            return null
+        },
     },
 
     methods: {
