@@ -34,8 +34,9 @@
                 :type="showPassword ? 'text' : 'password'"
                 required
             />
-            <button @click="toggleShowPassword">show password</button>
+            <button @click.prevent="toggleShowPassword">show password</button>
         </div>
+        <slot />
         <input type="submit" />
     </form>
 </template>
@@ -66,8 +67,8 @@ export default {
                 lastName: null,
                 email: null,
                 password: null,
-                showPassword: false,
             },
+            showPassword: false,
         }
     },
 
