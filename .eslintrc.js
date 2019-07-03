@@ -21,7 +21,7 @@ module.exports = {
         'vue/no-v-html': "off",
         "vue/no-parsing-error": ['off'],
         "vue/component-name-in-template-casing": ['error', "PascalCase", { 
-            "ignores": ['router-link', 'router-view', 'error', 'splash', 'transition', 'nav-bar', 'modal-answer', 'lazy-component']
+            "ignores": ['router-link', 'router-view']
         }],
         "vue/html-closing-bracket-newline": ["error", {
               "singleline": "never",
