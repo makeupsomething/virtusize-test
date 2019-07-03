@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0; }
+
+* + * {
+  margin-top: 1rem; }
+
+html,
+body {
+  margin: 0;
+  color: slategray;
+  background-color: ghostwhite;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  line-height: 1.5; }
+  html h1,
+  html h2,
+  html h3,
+  html h4,
+  html h5,
+  html h6,
+  body h1,
+  body h2,
+  body h3,
+  body h4,
+  body h5,
+  body h6 {
+    color: #222;
+    line-height: 1.1; }
+    html h1 + *,
+    html h2 + *,
+    html h3 + *,
+    html h4 + *,
+    html h5 + *,
+    html h6 + *,
+    body h1 + *,
+    body h2 + *,
+    body h3 + *,
+    body h4 + *,
+    body h5 + *,
+    body h6 + * {
+      margin-top: 0.5rem; }
+  html strong,
+  body strong {
+    color: #222; }
+  html li,
+  body li {
+    margin-top: 0.25rem; }
