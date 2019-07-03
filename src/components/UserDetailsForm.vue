@@ -86,7 +86,6 @@ export default {
     computed: {
         passwordStrength() {
             if (this.creds.password) {
-                console.log(zxcvbn(this.creds.password))
                 return this.passwordIndicator[zxcvbn(this.creds.password).score]
             }
             return null
