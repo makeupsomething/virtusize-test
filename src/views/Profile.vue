@@ -1,57 +1,24 @@
 <template>
-    <section>
-        User profile
-        <div v-if="user">
-            <img :src="imageUrl" />
-            <div v-if="!editName" class="user-name">
+    <section v-if="user" class="card">
+        <h2>User profile</h2>
+        <div v-if="!editing" class="card__content card__content--profile">
+            <img class="profile-picture" :src="imageUrl" />
+            <div class="text text--name">
                 {{ user.firstName }}
                 {{ user.lastName }}
-                <button @click="editName = !editName">edit name</button>
             </div>
-            <div v-else>
-                <UserDetailsForm
-                    :edit-name="editName"
-                    :edit-email="false"
-                    :edit-password="false"
-                >
-                    <button @click.prevent="editName = !editName">
-                        cancel
-                    </button>
-                </UserDetailsForm>
-            </div>
-            <div v-if="!editEmail" class="user-email">
+            <div class="text text--email">
                 {{ user.email }}
-                <button @click="editEmail = !editEmail">edit email</button>
             </div>
-            <div v-else>
-                <UserDetailsForm
-                    :edit-name="false"
-                    :edit-email="editEmail"
-                    :edit-password="false"
-                >
-                    <button @click.prevent="editEmail = !editEmail">
-                        cancel
-                    </button>
-                </UserDetailsForm>
-            </div>
-            <div v-if="!editPassword" class="user-password">
-                {{ user.password }}
-                <button @click="editPassword = !editPassword">
-                    edit password
-                </button>
-            </div>
-            <div v-else>
-                <UserDetailsForm
-                    :edit-name="false"
-                    :edit-email="false"
-                    :edit-password="editPassword"
-                >
-                    <button @click.prevent="editPassword = !editPassword">
-                        cancel
-                    </button>
-                </UserDetailsForm>
-            </div>
+            <button class="btn btn--green" @click="toggleEdit">
+                Edit Details
+            </button>
         </div>
+        <UserDetailsForm v-else>
+            <button class="btn btn--red" @click="toggleEdit">
+                Cancel
+            </button>
+        </UserDetailsForm>
     </section>
 </template>
 
@@ -68,9 +35,7 @@ export default {
 
     data() {
         return {
-            editName: false,
-            editEmail: false,
-            editPassword: false,
+            editing: false,
         }
     },
 
@@ -88,8 +53,7 @@ export default {
 
     methods: {
         toggleEdit(test) {
-            test = !test
-            console.log(test)
+            this.editing = !this.editing
         },
     },
 }

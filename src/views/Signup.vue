@@ -1,5 +1,8 @@
 <template>
-    <section>
+    <section class="card">
+        <h2>
+            Let's get your details ✍️
+        </h2>
         <UserDetailsForm />
     </section>
 </template>
