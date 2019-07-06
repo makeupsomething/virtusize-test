@@ -1,22 +1,22 @@
 <template>
     <form action="" class="form" @submit.prevent="submit">
-        <div v-if="editName" class="form__group--two">
+        <div class="form__group form__group--two">
             <div class="form__group">
                 <label for="first" class="form__label">First Name</label>
                 <input
                     id="first"
-                    v-model="creds.firstName"
+                    v-model="firstName"
                     class="form__input"
                     placeholder="First Name"
                     required
                     type="text"
                 />
             </div>
-            <div v-if="editName" class="form__group">
+            <div class="form__group">
                 <label for="last" class="form__label">Last Name</label>
                 <input
                     id="last"
-                    v-model="creds.lastName"
+                    v-model="lastName"
                     class="form__input"
                     placeholder="Last Name"
                     required
@@ -24,45 +24,50 @@
                 />
             </div>
         </div>
-        <div v-if="editEmail" class="form__group">
+        <div class="form__group">
             <label class="form__label" for="email">Email</label>
             <input
                 id="email"
-                v-model="creds.email"
+                v-model="email"
                 class="form__input"
                 placeholder="email"
                 type="email"
                 required
             />
         </div>
-        <div v-if="editPassword" class="form__group--two">
-            <div class="form__group">
-                <label class="form__label" for="password">Password</label>
-                <input
-                    id="password"
-                    v-model="creds.password"
-                    placeholder="Password"
-                    class="form__input"
-                    :type="showPassword ? 'text' : 'password'"
-                    required
-                />
-            </div>
-            <button class="btn btn--icon" @click.prevent="toggleShowPassword">
-                <i v-if="showPassword" class="fa fa-eye" />
-                <i v-else class="fa fa-eye-slash" />
+        <div class="form__group">
+            <label class="form__label" for="password">Password</label>
+            <input
+                id="password"
+                v-model="password"
+                placeholder="Password"
+                class="form__input"
+                :type="showPassword ? 'text' : 'password'"
+                required
+            />
+            <meter
+                id="password-strength-meter"
+                :value="passwordStrength"
+                max="4"
+            ></meter>
+            <p id="password-strength-text">
+                {{ strengthText[passwordStrength] }}
+            </p>
+        </div>
+        <div class="form__group--buttons">
+            <button class="btn" @click.prevent="toggleShowPassword">
+                <span v-if="!showPassword">
+                    <i class="fa fa-eye" />
+                    Show Password
+                </span>
+                <span v-else>
+                    <i class="fa fa-eye-slash" />
+                    Hide Password
+                </span>
             </button>
-            <!-- <button @click.prevent="toggleShowPassword">
-                s
-            </button> -->
-            <!-- <span>{{ passwordStrength }}</span> -->
-            <!-- <button class="btn" @click.prevent="creds.password = null">
-                clear
-            </button> -->
         </div>
-        <div cass="form__group--buttons">
-            <input type="submit" class="btn btn--green" />
-            <slot />
-        </div>
+        <input type="submit" class="btn btn--green" />
+        <slot />
     </form>
 </template>
 
@@ -72,35 +77,18 @@ import zxcvbn from 'zxcvbn'
 export default {
     name: 'UserDetailsForm',
 
-    props: {
-        editName: {
-            type: Boolean,
-            default: true,
-        },
-        editEmail: {
-            type: Boolean,
-            default: true,
-        },
-        editPassword: {
-            type: Boolean,
-            default: true,
-        },
-    },
-
     data() {
         return {
-            creds: {
-                firstName: null,
-                lastName: null,
-                email: null,
-                password: null,
-            },
-            passwordIndicator: {
-                0: '😭',
-                1: '😕',
-                2: '😐',
-                3: '🙂',
-                4: '😃',
+            firstName: null,
+            lastName: null,
+            email: null,
+            password: null,
+            strengthText: {
+                0: 'Worst',
+                1: 'Bad',
+                2: 'Weak',
+                3: 'Good',
+                4: 'Strong',
             },
             showPassword: false,
         }
@@ -108,19 +96,31 @@ export default {
 
     computed: {
         passwordStrength() {
-            if (this.creds.password) {
-                return this.passwordIndicator[zxcvbn(this.creds.password).score]
+            if (this.password) {
+                return zxcvbn(this.password).score
             }
             return null
         },
+        user() {
+            console.log(this.$store.state.user)
+            return this.$store.state.user
+        },
+    },
+
+    created() {
+        if (this.user) {
+            this.firstName = this.user.firstName
+            this.lastName = this.user.lastName
+            this.email = this.user.email
+        }
     },
 
     methods: {
         submit() {
             this.$store.commit('setUser', {
-                firstName: this.creds.firstName,
-                lastName: this.creds.lastName,
-                email: this.creds.email,
+                firstName: this.firstName,
+                lastName: this.lastName,
+                email: this.email,
             })
             this.$router.push({name: 'profile'})
         },

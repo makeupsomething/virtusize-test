@@ -3,7 +3,6 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     &__group {
         width: 100%;
@@ -12,10 +11,12 @@
         &--two {
             width: 100%;
             display: flex;
+            margin-bottom: 0;
         }
 
         &--buttons {
             width: 100%;
+            margin-bottom: 2rem;
         }
     }
 
@@ -23,7 +24,7 @@
         display: block;
         font-size: 1.5rem;
         font-family: inherit;
-        padding: 1rem 0 1rem 1rem;
+        // padding: 1rem 0 1rem 1rem;
         border-radius: 2px;
         border: none;
         border-bottom: 3px solid transparent;
@@ -53,10 +54,16 @@
         display: block;
         transition: all .3s;
     }
-
-    // &__input:placeholder-shown + &__label {
-    //     opacity: 0;
-    //     visibility: hidden;
-    //     transform: translateY(-4rem);
-    // }
 }
+
+meter {
+    //appearance: none;
+    margin: 0 auto;
+    width: 100%;
+    height: 1rem;
+}
+
+meter[value="1"]::-webkit-meter-optimum-value { background: $color-secondary-dark; }
+meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
+meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
+meter[value="4"]::-webkit-meter-optimum-value { background: $color-primary; }
