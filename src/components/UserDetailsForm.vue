@@ -1,45 +1,68 @@
 <template>
-    <form action="" @submit.prevent="submit">
-        <div v-if="editName">
-            <label for="first">first name</label>
-            <input
-                id="first"
-                v-model="creds.firstName"
-                placeholder="Test"
-                type="text"
-            />
-            <label for="last">last name</label>
-            <input
-                id="last"
-                v-model="creds.lastName"
-                placeholder="User"
-                type="text"
-            />
+    <form action="" class="form" @submit.prevent="submit">
+        <div v-if="editName" class="form__group--two">
+            <div class="form__group">
+                <label for="first" class="form__label">First Name</label>
+                <input
+                    id="first"
+                    v-model="creds.firstName"
+                    class="form__input"
+                    placeholder="First Name"
+                    required
+                    type="text"
+                />
+            </div>
+            <div v-if="editName" class="form__group">
+                <label for="last" class="form__label">Last Name</label>
+                <input
+                    id="last"
+                    v-model="creds.lastName"
+                    class="form__input"
+                    placeholder="Last Name"
+                    required
+                    type="text"
+                />
+            </div>
         </div>
-        <div v-if="editEmail">
-            <label for="email">email</label>
+        <div v-if="editEmail" class="form__group">
+            <label class="form__label" for="email">Email</label>
             <input
                 id="email"
                 v-model="creds.email"
+                class="form__input"
                 placeholder="email"
                 type="email"
                 required
             />
         </div>
-        <div v-if="editPassword">
-            <label for="password">password</label>
-            <input
-                id="password"
-                v-model="creds.password"
-                :type="showPassword ? 'text' : 'password'"
-                required
-            />
-            <button @click.prevent="toggleShowPassword">show password</button>
-            <button @click.prevent="creds.password = null">clear</button>
-            <span>{{ passwordStrength }}</span>
+        <div v-if="editPassword" class="form__group--two">
+            <div class="form__group">
+                <label class="form__label" for="password">Password</label>
+                <input
+                    id="password"
+                    v-model="creds.password"
+                    placeholder="Password"
+                    class="form__input"
+                    :type="showPassword ? 'text' : 'password'"
+                    required
+                />
+            </div>
+            <button class="btn btn--icon" @click.prevent="toggleShowPassword">
+                <i v-if="showPassword" class="fa fa-eye" />
+                <i v-else class="fa fa-eye-slash" />
+            </button>
+            <!-- <button @click.prevent="toggleShowPassword">
+                s
+            </button> -->
+            <!-- <span>{{ passwordStrength }}</span> -->
+            <!-- <button class="btn" @click.prevent="creds.password = null">
+                clear
+            </button> -->
         </div>
-        <slot />
-        <input type="submit" />
+        <div cass="form__group--buttons">
+            <input type="submit" class="btn btn--green" />
+            <slot />
+        </div>
     </form>
 </template>
 

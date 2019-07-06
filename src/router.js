@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const UserSetup = () => import('@/views/UserSetup.vue')
+const Welcome = () => import('@/views/Welcome.vue')
 const Signup = () => import('@/views/Signup.vue')
 const Profile = () => import('@/views/Profile.vue')
 
@@ -14,7 +14,7 @@ export default new Router({
         {
             path: '/',
             name: 'user-setup',
-            component: UserSetup,
+            component: Welcome,
         },
         {
             path: '/signup',
