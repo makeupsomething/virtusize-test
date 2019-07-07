@@ -27,6 +27,9 @@
             </router-link>
         </div>
         <div class="user-details">
+            <div class="text text--email">
+                Password Set <i class="fa fa-lock" />
+            </div>
             <router-link
                 tag="button"
                 :to="{name: 'edit-password'}"
