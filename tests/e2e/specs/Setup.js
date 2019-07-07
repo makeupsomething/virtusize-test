@@ -1,0 +1,18 @@
+describe('Adding data as a new user', () => {
+    it('Loads the welcome page', () => {
+        cy.visit('/')
+            .contains('h2', 'Welcome!')
+            .getByText(/get started!/i)
+            .click()
+            .get('[id="firstName"]')
+            .type('Test')
+            .get('[id="lastName"]')
+            .type('User')
+            .get('[id="email"]')
+            .type('test@test.com')
+            .get('[id="password"]')
+            .type('123456')
+            .get('[type="submit"]')
+            .click()
+    })
+})

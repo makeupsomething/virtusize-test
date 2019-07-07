@@ -5,9 +5,9 @@
             class="form__group form__group--two"
         >
             <div class="form__group">
-                <label for="first" class="form__label">First Name</label>
+                <label for="firstName" class="form__label">First Name</label>
                 <input
-                    id="first"
+                    id="firstName"
                     v-model="firstName"
                     class="form__input"
                     placeholder="First Name"
@@ -16,9 +16,9 @@
                 />
             </div>
             <div class="form__group">
-                <label for="last" class="form__label">Last Name</label>
+                <label for="lastName" class="form__label">Last Name</label>
                 <input
-                    id="last"
+                    id="lastName"
                     v-model="lastName"
                     class="form__input"
                     placeholder="Last Name"
