@@ -34,8 +34,13 @@ export default new Router({
                     component: UserDetails,
                 },
                 {
-                    name: 'edit',
-                    path: 'edit',
+                    name: 'edit-name',
+                    path: 'edit/name',
+                    component: UserDetailsForm,
+                },
+                {
+                    name: 'edit-email',
+                    path: 'edit/email',
                     component: UserDetailsForm,
                 },
                 {
