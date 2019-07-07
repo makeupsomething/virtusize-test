@@ -1,7 +1,12 @@
 <template>
-    <main>
-        <router-view />
-    </main>
+    <div>
+        <div class="header">
+            <h1>My Profile!</h1>
+        </div>
+        <main>
+            <router-view />
+        </main>
+    </div>
 </template>
 
 <script>
