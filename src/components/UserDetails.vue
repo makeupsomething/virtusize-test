@@ -1,10 +1,9 @@
 <template>
     <div class="card__content card__content--profile">
         <img class="profile-picture" :src="imageUrl" />
-        <div class="user-details">
+        <div id="user-name" class="user-details">
             <div class="text text--name">
-                {{ user.firstName }}
-                {{ user.lastName }}
+                <span>{{ user.firstName }} {{ user.lastName }}</span>
             </div>
             <router-link
                 tag="button"
@@ -14,9 +13,9 @@
                 <i class="fa fa-edit" />
             </router-link>
         </div>
-        <div class="user-details">
+        <div id="user-email" class="user-details">
             <div class="text text--email">
-                {{ user.email }}
+                <span>{{ user.email }}</span>
             </div>
             <router-link
                 tag="button"

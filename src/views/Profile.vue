@@ -29,6 +29,8 @@ export default {
                 'setUser',
                 JSON.parse(localStorage.getItem('userDetails')),
             )
+        } else {
+            this.$router.push({name: 'user-setup'})
         }
     },
 }
