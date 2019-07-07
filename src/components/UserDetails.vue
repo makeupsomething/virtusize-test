@@ -1,23 +1,43 @@
 <template>
     <div class="card__content card__content--profile">
         <img class="profile-picture" :src="imageUrl" />
-        <div class="text text--name">
-            {{ user.firstName }}
-            {{ user.lastName }}
+        <div class="user-details">
+            <div class="text text--name">
+                {{ user.firstName }}
+                {{ user.lastName }}
+            </div>
+            <router-link
+                tag="button"
+                :to="{name: 'edit-name'}"
+                class="btn btn--green"
+            >
+                <i class="fa fa-edit" />
+            </router-link>
         </div>
-        <div class="text text--email">
-            {{ user.email }}
+        <div class="user-details">
+            <div class="text text--email">
+                {{ user.email }}
+            </div>
+            <router-link
+                tag="button"
+                :to="{name: 'edit-email'}"
+                class="btn btn--green"
+            >
+                <i class="fa fa-edit" />
+            </router-link>
         </div>
-        <router-link tag="button" :to="{name: 'edit'}" class="btn btn--green">
-            Edit Details
-        </router-link>
-        <router-link
-            tag="button"
-            :to="{name: 'edit-password'}"
-            class="btn btn--green"
-        >
-            Edit Password
-        </router-link>
+        <div class="user-details">
+            <div class="text text--email">
+                Password Set <i class="fa fa-lock" />
+            </div>
+            <router-link
+                tag="button"
+                :to="{name: 'edit-password'}"
+                class="btn btn--green"
+            >
+                Edit Password
+            </router-link>
+        </div>
     </div>
 </template>
 
