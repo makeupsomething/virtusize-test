@@ -22,5 +22,14 @@ export default {
             return this.$store.state.user
         },
     },
+
+    created() {
+        if (localStorage.getItem('userDetails')) {
+            this.$store.commit(
+                'setUser',
+                JSON.parse(localStorage.getItem('userDetails')),
+            )
+        }
+    },
 }
 </script>
