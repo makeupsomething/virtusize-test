@@ -124,6 +124,14 @@ export default {
                 lastName: this.lastName,
                 email: this.email,
             })
+            localStorage.setItem(
+                'userDetails',
+                JSON.stringify({
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    email: this.email,
+                }),
+            )
             this.$router.push({name: 'profile-details'})
         },
         toggleShowPassword() {

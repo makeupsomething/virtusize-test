@@ -24,5 +24,15 @@
 <script>
 export default {
     name: 'Welcome',
+
+    created() {
+        if (localStorage.getItem('userDetails')) {
+            this.$store.commit(
+                'setUser',
+                JSON.parse(localStorage.getItem('userDetails')),
+            )
+            this.$router.push({name: 'profile-details'})
+        }
+    },
 }
 </script>
