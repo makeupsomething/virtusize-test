@@ -1,6 +1,9 @@
 <template>
     <form action="" class="form" @submit.prevent="submit">
-        <div class="form__group form__group--two">
+        <div
+            v-if="this.$route.name !== 'edit-password'"
+            class="form__group form__group--two"
+        >
             <div class="form__group">
                 <label for="first" class="form__label">First Name</label>
                 <input
@@ -24,7 +27,7 @@
                 />
             </div>
         </div>
-        <div class="form__group">
+        <div v-if="this.$route.name !== 'edit-password'" class="form__group">
             <label class="form__label" for="email">Email</label>
             <input
                 id="email"
@@ -35,7 +38,7 @@
                 required
             />
         </div>
-        <div class="form__group">
+        <div v-if="this.$route.name !== 'edit'" class="form__group">
             <label class="form__label" for="password">Password</label>
             <input
                 id="password"
@@ -54,7 +57,7 @@
                 {{ strengthText[passwordStrength] }}
             </p>
         </div>
-        <div class="form__group--buttons">
+        <div v-if="this.$route.name !== 'edit'" class="form__group--buttons">
             <button class="btn" @click.prevent="toggleShowPassword">
                 <span v-if="!showPassword">
                     <i class="fa fa-eye" />
@@ -102,7 +105,6 @@ export default {
             return null
         },
         user() {
-            console.log(this.$store.state.user)
             return this.$store.state.user
         },
     },
@@ -122,7 +124,7 @@ export default {
                 lastName: this.lastName,
                 email: this.email,
             })
-            this.$router.push({name: 'profile'})
+            this.$router.push({name: 'profile-details'})
         },
         toggleShowPassword() {
             this.showPassword = !this.showPassword
