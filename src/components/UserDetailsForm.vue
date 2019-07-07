@@ -68,9 +68,9 @@
                 :value="passwordStrength"
                 max="4"
             ></meter>
-            <p id="password-strength-text">
+            <span id="password-strength-text">
                 {{ strengthText[passwordStrength] }}
-            </p>
+            </span>
         </div>
         <div
             v-if="
