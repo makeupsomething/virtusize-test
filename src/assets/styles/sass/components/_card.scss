@@ -41,6 +41,10 @@
                 display: flex;
                 justify-content: space-between;
 
+                @include respond(phone) {
+                    width: 90%;
+                }
+
             }
 
             .profile-picture {

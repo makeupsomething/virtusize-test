@@ -34,7 +34,7 @@
                 :to="{name: 'edit-password'}"
                 class="btn btn--green"
             >
-                Edit Password
+                <i class="fa fa-edit" />
             </router-link>
         </div>
     </div>
