@@ -1,6 +1,6 @@
 <template>
     <section class="card">
-        <h2>Welcome!</h2>
+        <h2 data-testid="section-header">Welcome!</h2>
         <div class="card__content--welcome">
             <div>
                 <span class="text">

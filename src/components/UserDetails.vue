@@ -3,10 +3,13 @@
         <img class="profile-picture" :src="imageUrl" />
         <div id="user-name" class="user-details">
             <div class="text text--name">
-                <span>{{ user.firstName }} {{ user.lastName }}</span>
+                <span title="user-name">
+                    {{ user.firstName }} {{ user.lastName }}
+                </span>
             </div>
             <router-link
                 tag="button"
+                aria-label="edit name"
                 :to="{name: 'edit-name'}"
                 class="btn btn--green"
             >
@@ -15,10 +18,11 @@
         </div>
         <div id="user-email" class="user-details">
             <div class="text text--email">
-                <span>{{ user.email }}</span>
+                <span title="email">{{ user.email }}</span>
             </div>
             <router-link
                 tag="button"
+                aria-label="edit email"
                 :to="{name: 'edit-email'}"
                 class="btn btn--green"
             >
@@ -31,6 +35,7 @@
             </div>
             <router-link
                 tag="button"
+                aria-label="edit password"
                 :to="{name: 'edit-password'}"
                 class="btn btn--green"
             >

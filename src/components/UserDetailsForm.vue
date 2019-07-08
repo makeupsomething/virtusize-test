@@ -90,7 +90,7 @@
                 </span>
             </button>
         </div>
-        <input type="submit" class="btn btn--green" />
+        <input type="submit" class="btn btn--green" value="submit" />
         <slot />
     </form>
 </template>

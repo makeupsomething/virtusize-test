@@ -1,8 +1,3 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
 const state = {
     error: null,
     user: null,
@@ -15,7 +10,9 @@ const mutations = {
     },
 }
 
-export default new Vuex.Store({
+export default {
     state,
     mutations,
-})
+}
+
+//export default new Vuex.Store({})
