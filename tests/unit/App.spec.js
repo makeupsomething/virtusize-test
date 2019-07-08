@@ -65,6 +65,34 @@ test('can navigate to signup page from welcome page', async () => {
     )
 })
 
+test('correct password strength is shown for each password', async () => {
+    const passwords = {
+        worst: '123456',
+        bad: '123456abcde',
+        weak: '12@@33df',
+        good: '12@@33dfrr',
+        strong: '12@@33sdfr%',
+    }
+
+    const {queryByTestId, getByLabelText, debug} = render(App, {routes, store})
+    const passwordInput = getByLabelText(/password/i)
+
+    await fireEvent.update(passwordInput, passwords.worst)
+    expect(queryByTestId('password-strength-text')).toHaveTextContent('Worst')
+
+    await fireEvent.update(passwordInput, passwords.bad)
+    expect(queryByTestId('password-strength-text')).toHaveTextContent('Bad')
+
+    await fireEvent.update(passwordInput, passwords.weak)
+    expect(queryByTestId('password-strength-text')).toHaveTextContent('Weak')
+
+    await fireEvent.update(passwordInput, passwords.good)
+    expect(queryByTestId('password-strength-text')).toHaveTextContent('Good')
+
+    await fireEvent.update(passwordInput, passwords.strong)
+    expect(queryByTestId('password-strength-text')).toHaveTextContent('Strong')
+})
+
 function renderAppComponent(customStore) {
     return render(App, {store: {...store, ...customStore}, routes})
 }

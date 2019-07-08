@@ -68,7 +68,11 @@
                 :value="passwordStrength"
                 max="4"
             ></meter>
-            <span id="password-strength-text">
+            <span
+                id="password-strength-text"
+                data-testid="password-strength-text"
+                aria-live="polite"
+            >
                 {{ strengthText[passwordStrength] }}
             </span>
         </div>

@@ -25,40 +25,6 @@ describe('Adding data as a new user', () => {
     })
 })
 
-describe('Password shows correct strength output', () => {
-    it('Shows the correct text based on the password strength', () => {
-        cy.visit('/signup')
-            .get('[id="password"]')
-            .type('123456')
-            .get('[id="password-strength-text"]')
-            .contains('span', 'Worst')
-
-            .get('[id="password"]')
-            .clear()
-            .type('123456abcde')
-            .get('[id="password-strength-text"]')
-            .contains('span', 'Bad')
-
-            .get('[id="password"]')
-            .clear()
-            .type('12@@33df')
-            .get('[id="password-strength-text"]')
-            .contains('span', 'Weak')
-
-            .get('[id="password"]')
-            .clear()
-            .type('12@@33dfrr')
-            .get('[id="password-strength-text"]')
-            .contains('span', 'Good')
-
-            .get('[id="password"]')
-            .clear()
-            .type('12@@33sdfr%')
-            .get('[id="password-strength-text"]')
-            .contains('span', 'Strong')
-    })
-})
-
 describe('Updating the users name and email', () => {
     it('Allows user to update their details', () => {
         cy.visit('/')
