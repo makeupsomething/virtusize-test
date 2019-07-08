@@ -4,7 +4,9 @@
             <h1>My Profile!</h1>
         </div>
         <main>
-            <router-view />
+            <transition name="slide-left" mode="out-in">
+                <router-view />
+            </transition>
         </main>
     </div>
 </template>

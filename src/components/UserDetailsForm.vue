@@ -81,9 +81,12 @@
                 this.$route.name === 'edit-password' ||
                     this.$route.name === 'signup'
             "
-            class="form__group--buttons"
+            class="form__group--toggle"
         >
-            <button class="btn" @click.prevent="toggleShowPassword">
+            <button
+                class="btn btn--secondary"
+                @click.prevent="toggleShowPassword"
+            >
                 <span v-if="!showPassword">
                     <i class="fa fa-eye" />
                     Show Password
@@ -94,8 +97,10 @@
                 </span>
             </button>
         </div>
-        <input type="submit" class="btn btn--green" value="submit" />
-        <slot />
+        <div class="form__group--buttons">
+            <input type="submit" class="btn btn--green" value="submit" />
+            <slot />
+        </div>
     </form>
 </template>
 
