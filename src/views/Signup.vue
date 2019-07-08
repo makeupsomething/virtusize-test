@@ -1,6 +1,6 @@
 <template>
     <section class="card">
-        <h2>
+        <h2 data-testid="section-header">
             Let's get your details ✍️
         </h2>
         <UserDetailsForm />
