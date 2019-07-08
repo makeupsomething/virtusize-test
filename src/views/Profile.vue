@@ -1,15 +1,17 @@
 <template>
     <section v-if="user" class="card">
-        <h2>User profile</h2>
-        <router-view>
-            <router-link
-                tag="button"
-                :to="{name: 'profile-details'}"
-                class="btn btn--red"
-            >
-                Cancel
-            </router-link>
-        </router-view>
+        <h2>{{ headerText }}</h2>
+        <transition name="slide-left" mode="out-in">
+            <router-view>
+                <router-link
+                    tag="button"
+                    :to="{name: 'profile-details'}"
+                    class="btn btn--red"
+                >
+                    Cancel
+                </router-link>
+            </router-view>
+        </transition>
     </section>
 </template>
 
@@ -20,6 +22,21 @@ export default {
     computed: {
         user() {
             return this.$store.state.user
+        },
+        headerText() {
+            switch (this.$route.name) {
+                case 'edit-name':
+                    return 'Edit Name'
+                    break
+                case 'edit-email':
+                    return 'Edit Email'
+                    break
+                case 'edit-password':
+                    return 'Edit Password'
+                    break
+                default:
+                    return 'User profile'
+            }
         },
     },
 

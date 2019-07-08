@@ -14,9 +14,15 @@
             margin-bottom: 0;
         }
 
-        &--buttons {
+        &--toggle {
             width: 100%;
             margin-bottom: 2rem;
+        }
+
+        &--buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 
