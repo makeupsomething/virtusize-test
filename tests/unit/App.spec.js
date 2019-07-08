@@ -161,3 +161,38 @@ test('can edit details', async () => {
 
     expect(getByTitle('email')).toHaveTextContent('editeduser@test.com')
 })
+
+test('correct inputs show when editing details and can cancel edit', async () => {
+    const {
+        queryByLabelText,
+        getByLabelText,
+        getByText,
+        getByTitle,
+        debug,
+    } = renderAppComponent()
+
+    const editNameButton = getByLabelText(/edit name/i)
+    await fireEvent.click(editNameButton)
+
+    let firstNameInput = queryByLabelText(/first name/i)
+    let lastNameInput = queryByLabelText(/last name/i)
+    let emailInput = queryByLabelText(/email/i)
+
+    expect(firstNameInput).toBeTruthy()
+    expect(lastNameInput).toBeTruthy()
+    expect(emailInput).toBeFalsy()
+
+    let cancelButton = getByText(/cancel/i)
+    await fireEvent.click(cancelButton)
+
+    const editEmailButton = queryByLabelText(/edit email/i)
+    await fireEvent.click(editEmailButton)
+
+    firstNameInput = queryByLabelText(/first name/i)
+    lastNameInput = queryByLabelText(/last name/i)
+    emailInput = queryByLabelText(/email/i)
+
+    expect(firstNameInput).toBeFalsy()
+    expect(lastNameInput).toBeFalsy()
+    expect(emailInput).toBeTruthy()
+})
