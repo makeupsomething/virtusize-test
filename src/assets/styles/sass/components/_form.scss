@@ -63,6 +63,14 @@
     }
 }
 
+select {
+    width: 100%;
+    padding: 3rem;
+    border: none;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+}
+
 meter {
     //appearance: none;
     margin: 0 auto;

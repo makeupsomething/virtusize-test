@@ -1,6 +1,6 @@
 <template>
     <section v-if="user" class="card">
-        <h2>{{ headerText }}</h2>
+        <h2>{{ $t(headerText) }}</h2>
         <transition name="slide-left" mode="out-in">
             <router-view>
                 <router-link
@@ -8,7 +8,7 @@
                     :to="{name: 'profile-details'}"
                     class="btn btn--red"
                 >
-                    Cancel
+                    {{ $t('Cancel') }}
                 </router-link>
             </router-view>
         </transition>

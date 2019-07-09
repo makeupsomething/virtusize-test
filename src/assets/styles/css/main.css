@@ -185,6 +185,13 @@ body {
     display: block;
     transition: all .3s; }
 
+select {
+  width: 100%;
+  padding: 3rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #f1f1f1; }
+
 meter {
   margin: 0 auto;
   width: 100%;
