@@ -67,6 +67,7 @@
                 :placeholder="$t('Password')"
                 class="form__input"
                 :type="showPassword ? 'text' : 'password'"
+                minlength="6"
                 required
             />
             <meter
