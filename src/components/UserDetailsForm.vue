@@ -147,6 +147,7 @@ export default {
     },
 
     created() {
+        // If there are user details in the store then we prefill the inputs with current value
         if (this.user) {
             this.firstName = this.user.firstName
             this.lastName = this.user.lastName
@@ -156,6 +157,7 @@ export default {
 
     methods: {
         submit() {
+            // Add the users details to the store and also save them to localhost
             this.$store.commit('setUser', {
                 firstName: this.firstName,
                 lastName: this.lastName,
@@ -172,6 +174,7 @@ export default {
             this.$router.push({name: 'profile-details'})
         },
         toggleShowPassword() {
+            // Update weather the password should be masked or not
             this.showPassword = !this.showPassword
         },
     },

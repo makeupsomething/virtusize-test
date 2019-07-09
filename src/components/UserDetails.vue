@@ -56,6 +56,7 @@ export default {
             return this.$store.state.user
         },
         imageUrl() {
+            // Generare the URL to fetch the users profile picture
             if (this.user && this.user.email) {
                 return `https://www.gravatar.com/avatar/${md5(this.user.email)}`
             }
