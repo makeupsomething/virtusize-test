@@ -1,13 +1,13 @@
 <template>
     <section class="card">
-        <h2 data-testid="section-header">Welcome!</h2>
+        <h2 data-testid="section-header">{{ $t('Welcome!') }}</h2>
         <div class="card__content--welcome">
             <div>
                 <span class="text">
-                    It looks like you don't have an account yet 😢
+                    {{ $t("It looks like you don't have an account yet") }} 😢
                 </span>
                 <span class="text">
-                    Let's get you set up!
+                    {{ $t("Let's get you set up!") }}
                 </span>
             </div>
             <router-link
@@ -15,7 +15,7 @@
                 :to="{name: 'signup'}"
                 class="btn btn--green"
             >
-                get started!
+                {{ $t('get started!') }}
             </router-link>
         </div>
     </section>

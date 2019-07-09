@@ -8,23 +8,27 @@
             class="form__group form__group--two"
         >
             <div class="form__group">
-                <label for="firstName" class="form__label">First Name</label>
+                <label for="firstName" class="form__label">{{
+                    $t('First Name')
+                }}</label>
                 <input
                     id="firstName"
                     v-model="firstName"
                     class="form__input"
-                    placeholder="First Name"
+                    :placeholder="$t('First Name')"
                     required
                     type="text"
                 />
             </div>
             <div class="form__group">
-                <label for="lastName" class="form__label">Last Name</label>
+                <label for="lastName" class="form__label">{{
+                    $t('Last Name')
+                }}</label>
                 <input
                     id="lastName"
                     v-model="lastName"
                     class="form__input"
-                    placeholder="Last Name"
+                    :placeholder="$t('Last Name')"
                     required
                     type="text"
                 />
@@ -37,12 +41,12 @@
             "
             class="form__group"
         >
-            <label class="form__label" for="email">Email</label>
+            <label class="form__label" for="email">{{ $t('Email') }}</label>
             <input
                 id="email"
                 v-model="email"
                 class="form__input"
-                placeholder="email"
+                :placeholder="$t('Email')"
                 type="email"
                 required
             />
@@ -54,11 +58,13 @@
             "
             class="form__group"
         >
-            <label class="form__label" for="password">Password</label>
+            <label class="form__label" for="password">{{
+                $t('Password')
+            }}</label>
             <input
                 id="password"
                 v-model="password"
-                placeholder="Password"
+                :placeholder="$t('Password')"
                 class="form__input"
                 :type="showPassword ? 'text' : 'password'"
                 required
@@ -73,7 +79,7 @@
                 data-testid="password-strength-text"
                 aria-live="polite"
             >
-                {{ strengthText[passwordStrength] }}
+                {{ $t(strengthText[passwordStrength]) }}
             </span>
         </div>
         <div
@@ -89,16 +95,16 @@
             >
                 <span v-if="!showPassword">
                     <i class="fa fa-eye" />
-                    Show Password
+                    {{ $t('Show Password') }}
                 </span>
                 <span v-else>
                     <i class="fa fa-eye-slash" />
-                    Hide Password
+                    {{ $t('Hide Password') }}
                 </span>
             </button>
         </div>
         <div class="form__group--buttons">
-            <input type="submit" class="btn btn--green" value="submit" />
+            <input type="submit" class="btn btn--green" :value="$t('Submit')" />
             <slot />
         </div>
     </form>

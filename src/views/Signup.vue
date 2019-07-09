@@ -1,7 +1,7 @@
 <template>
     <section class="card">
         <h2 data-testid="section-header">
-            Let's get your details ✍️
+            {{ $t("Let's get your details") }} ✍️
         </h2>
         <UserDetailsForm />
     </section>
