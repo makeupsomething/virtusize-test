@@ -185,12 +185,13 @@ body {
     display: block;
     transition: all .3s; }
 
-select {
-  width: 100%;
-  padding: 3rem;
-  border: none;
-  border-radius: 50%;
-  background-color: #f1f1f1; }
+@media only screen and (max-width: 37.5em) {
+  select {
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    padding: 1rem;
+    -webkit-appearance: none; } }
 
 meter {
   margin: 0 auto;
@@ -224,6 +225,3 @@ meter[value="4"]::-webkit-meter-optimum-value {
   color: white;
   font-size: 3rem;
   box-shadow: 0px 0px 7px 1px #333; }
-  @media only screen and (max-width: 37.5em) {
-    .header {
-      justify-content: center; } }
