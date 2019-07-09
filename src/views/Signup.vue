@@ -18,6 +18,8 @@ export default {
     },
 
     created() {
+        //Check if the user has details saved in local storage,
+        //if yes add to the store then redirect them to their profile page
         if (localStorage.getItem('userDetails')) {
             this.$store.commit(
                 'setUser',

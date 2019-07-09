@@ -24,6 +24,7 @@ export default {
             return this.$store.state.user
         },
         headerText() {
+            //Updaet the header text of the card based on the currentl URL
             switch (this.$route.name) {
                 case 'edit-name':
                     return 'Edit Name'
@@ -41,6 +42,9 @@ export default {
     },
 
     created() {
+        //Check if the user has details saved in local storage,
+        //if yes add to the store then redirect them to their profile page
+        //if no, then direct them to the welcome page
         if (localStorage.getItem('userDetails')) {
             this.$store.commit(
                 'setUser',
