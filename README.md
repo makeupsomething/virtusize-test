@@ -1,5 +1,7 @@
 # Profile Display
 
+View it live here https://boring-swirles-8cd182.netlify.com/
+
 ## Instructions
 
 1. Navigate to [repo](https://github.com/makeupsomething/virtusize-test)
@@ -53,4 +55,4 @@ Each field on the form is required so the user cannon’t progress until they fi
 - I implemented e2e testing using cypress [GitHub - cypress-io/cypress: Fast, easy and reliable testing for anything that runs in a browser.](https://github.com/cypress-io/cypress) to test the “happy path for the user”.
 - I implemented unit tests using vue-testing-library [GitHub - testing-library/vue-testing-library: Lightweight adapter allowing DOM Testing Library to be used to test Vue.js components. Built on top of @vue/test-utils](https://github.com/testing-library/vue-testing-library) to cover some more of the edge cases that are not covered in the e2e tests.
 - I added translations using the i18n [GitHub - kazupon/vue-i18n: Internationalization plugin for Vue.js](https://github.com/kazupon/vue-i18n) library. The user can switch between English and Japanese language at any time using the dropdown on the top right of the page. Although the translations were done by me to they might not be completely correct 😥
-- I deployed it using netlify.
+- I deployed it using netlify here https://boring-swirles-8cd182.netlify.com/
