@@ -1,5 +1,6 @@
 import 'jest-dom/extend-expect'
 
+import Vue from 'vue'
 import App from '@/App.vue'
 import Welcome from '@/views/Welcome'
 import Signup from '@/views/Signup'
@@ -7,6 +8,17 @@ import Profile from '@/views/Profile'
 import UserDetails from '@/components/UserDetails'
 import UserDetailsForm from '@/components/UserDetailsForm'
 import store from '@/store'
+import Vuei18n from 'vue-i18n'
+import ja from '@/translations/ja'
+
+Vue.use(Vuei18n)
+
+const i18n = new Vuei18n({
+    locale: 'en',
+    messages: {
+        ja,
+    },
+})
 
 import {cleanup, render, fireEvent} from '@testing-library/vue'
 
@@ -53,8 +65,15 @@ const routes = [
 afterEach(cleanup)
 
 test('can navigate to signup page from welcome page', async () => {
-    // Notice how we pass a `routes` object to our render function.
-    const {queryByTestId, getByText, debug} = render(App, {routes, store})
+    const {queryByTestId, getByText, debug} = render(
+        App,
+        {
+            routes,
+            store,
+            i18n,
+        },
+        vue => vue.use(Vuei18n),
+    )
 
     expect(queryByTestId('section-header')).toHaveTextContent('Welcome!')
 
@@ -74,7 +93,11 @@ test('correct password strength is shown for each password', async () => {
         strong: '12@@33sdfr%',
     }
 
-    const {queryByTestId, getByLabelText, debug} = render(App, {routes, store})
+    const {queryByTestId, getByLabelText, debug} = render(
+        App,
+        {routes, store, i18n},
+        vue => vue.use(Vuei18n),
+    )
     const passwordInput = getByLabelText(/password/i)
 
     await fireEvent.update(passwordInput, passwords.worst)
@@ -94,7 +117,9 @@ test('correct password strength is shown for each password', async () => {
 })
 
 function renderAppComponent(customStore) {
-    return render(App, {store: {...store, ...customStore}, routes})
+    return render(App, {store: {...store, ...customStore}, routes, i18n}, vue =>
+        vue.use(Vuei18n),
+    )
 }
 
 test('can add details and submit', async () => {
