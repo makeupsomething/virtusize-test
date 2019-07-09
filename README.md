@@ -30,6 +30,8 @@ As time was a factor I decided to scaffold it using the Vue cli.
 
 I added a welcome page and a signup page  for when the user visits the page for the first time. They will be guided to the signup page where they can enter their details. These details (apart from the password) will be stored in local storage so the next time they visit the page they can go directly to their profile. When the user is saving their details *I intentionally do nothing with the password as I did not want to store it as plain text. It is assumed in a real app this would be stored by the backend*.
 
+The css is written in SASS and compiled to css. I tried to work in a BEM style but made some compromises on this when running out of time.
+
 #### Each information but the profile picture is editable using an edit icon button
 
 The users name, email and password each have an edit button beside them that when clicked will being the user to the appropriate form. I only use one form component for signup and editing each piece of the user details. But it will only show the relevant information for the view based on the current URL.
